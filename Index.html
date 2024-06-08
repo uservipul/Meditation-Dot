@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditation Dot</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>body { margin: 0; overflow: hidden; }</style>
+</head>
+<body>
+    <script>
+        let x, y, dx = 2, dy = 2, r;
+        function setup() {
+            createCanvas(windowWidth, windowHeight);
+            x = width / 2; y = height / 2;
+            r = min(width, height) * 0.05;
+            frameRate(240);
+        }
+        function draw() {
+            background(0);
+            x += dx; y += dy;
+            if (x - r < 0 || x + r > width) dx *= -1;
+            if (y - r < 0 || y + r > height) dy *= -1;
+            fill(255); noStroke(); ellipse(x, y, r * 2);
+        }
+        function windowResized() {
+            resizeCanvas(windowWidth, windowHeight);
+            r = min(width, height) * 0.05;
+        }
+    </script>
+</body>
+</html>
